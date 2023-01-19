@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Ejercicios prácticos del DOM</title>
+    <link rel="stylesheet" href="css/normalize.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/hamburgers/1.2.1/hamburgers.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+    
+</head>
+<body>
+
+    <header class="header">
+
+        <div class="header-logo">
+            <p class="header-logo__p">Ejercicios del DOM</p>
+        </div>
+
+        <nav class="header-nav">
+
+            <ul class="header-nav__ul none">
+                <li class="h-n-ul-li"><a href="#seccion-1" class="h-n-ul-li__a">Reloj digital y Alarma Sonora</a></li>
+                <li class="h-n-ul-li"><a href="#seccion-2" class="h-n-ul-li__a">Mueve la bolita</a></li>
+                <li class="h-n-ul-li"><a href="#seccion-3" class="h-n-ul-li__a">Countdown</a></li>
+                <li class="h-n-ul-li"><a href="#seccion-4" class="h-n-ul-li__a">SECCION 4</a></li>
+                <li class="h-n-ul-li"><a href="#seccion-5" class="h-n-ul-li__a">SECCION 5</a></li>
+            </ul> 
+
+            <button class="hamburger hamburger--vortex" type="button">
+                <span class="hamburger-box">
+                    <span class="hamburger-inner"></span>
+                </span>
+            </button>
+    
+        </nav>
+
+    </header>
+
+    <main class="main">
+
+        <section class="main-seccion" id="seccion-1">
+            <h2 class="main-seccion__h2">Reloj digital y Alarma Sonora</h2>
+            <div class="main-seccion__reloj"></div>
+            <form class="main-seccion__form">
+                <input type="button" value="MOSTRAR HORA" id="show">
+                <input type="button" value="OCULTAR HORA" id="occult">
+                <input type="button" value="ACTIVAR ALARMA" id="alarmOn">
+                <input type="button" value="DESACTIVAR ALARMA" id="alarmOff">
+            </form>
+            <audio src="assets/sounds/alarm-clock.mp3" id="audio"></audio>
+        </section>
+
+        <section class="main-seccion" id="seccion-2">
+            <h2 class="main-seccion__h2">Mueve la bolita</h2>
+            <div class="main-seccion__container">
+                <div class="m-s-container-bolita"></div>
+            </div>
+            <div class="main-seccion__buttons">
+                <input type="button" class="m-s-buttons-left" value="Izq"></input>
+                <input type="button" class="m-s-buttons-top" value="Arr"></input>
+                <input type="button" class="m-s-buttons-bottom" value="Aba"></input>
+                <input type="button" class="m-s-buttons-right" value="Der"></input>
+            </div>
+        </section>
+        
+        <section class="main-seccion" id="seccion-3">
+            <h2 class="main-seccion__h2">Countdown</h2>
+            <div class="main-seccion__countdown"></div>
+        </section>
+
+        <section class="main-seccion" id="seccion-4">
+            <h2 class="main-seccion__h2">SECCIÓN 4</h2>
+        </section>
+
+        <section class="main-seccion" id="seccion-5">
+            <h2 class="main-seccion__h2">SECCIÓN 5</h2>
+        </section>
+
+    </main>
+
+    <script src="js/script.js"></script>
+    
+</body>
+</html>

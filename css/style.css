@@ -1,0 +1,269 @@
+/* Custom Properties */
+
+:root {
+    --font-primary: 'Ubuntu', sans-serif;
+    --container-width: 1200px;
+    --link-color: #509EE3;
+}
+
+/* Reset */
+
+html {
+    scroll-behavior: smooth;
+    box-sizing: border-box;
+    font-size: 16px;
+    font-family: var(--font-primary);
+}
+
+*,
+*:after,
+*:before {
+    box-sizing: inherit;
+}
+
+body {
+    overflow-x: hidden;
+    /* overflow: hidden; */
+    margin: 0;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+}
+
+a {
+    text-decoration: none;
+    list-style: none;
+    color: black;
+    transition: all .5s ease-out;
+}
+
+a:hover {
+    color: var(--link-color);
+    font-size: 1.4rem;
+    opacity: 1;
+}
+
+li {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+button, input {
+    outline: none;
+}
+
+/* Utilities */
+
+.none {
+    display: none;
+}
+
+/* Site Properties */
+
+body {
+    position: relative;
+}
+
+.header {
+    width: 100%;
+    height: 10vh;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-left: 5%;
+    padding-right: 5%;
+    background-color: #114d4d;
+    position: sticky;
+    top: 0;
+    z-index: 9999;
+}
+
+.header-logo {
+    width: 45%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.header-logo__p {
+    font-size: 1rem;
+    font-weight: 900;
+    text-align: center;
+}
+
+.header-nav {
+    width: 45%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.header-nav__ul {
+    position: fixed;
+    top: 10vh;
+    left: 0;
+    background-color: rgb(194, 194, 172);
+    padding:0;
+    margin:0;
+    height: 100vh;
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    transform: translate(-150%, 0);
+    transition: transform .5s ease;
+}
+
+.h-n-ul-li {
+    padding: 1rem;
+    font-size: 1.2rem;
+    text-align: center;
+}
+
+.main {
+    width: 100%;
+    height: auto;
+}
+
+.main-seccion {
+    padding: 1rem;
+    padding-top: 10vh;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    max-width: var(--container-width);
+    min-height: 100vh;
+    height: 100vh;
+    text-align: center;
+    background-color: beige;
+}
+
+.main-seccion__h2 {
+    width: 100%;
+    height:15%;
+    padding:0;
+    display: grid;
+    place-content: center;
+    margin: 1rem 1rem 0rem 0rem;
+}
+
+.main-seccion__reloj {
+    width: 100%;
+    height: 15%;
+    margin: 0;
+    padding: 0;
+    border: 1px solid transparent;
+    transform: translate(-150%, 0);
+    transition: transform .5s ease;
+}
+
+.main-seccion__reloj * {
+    font-size: 3.5rem;
+    padding:0;
+    margin:2rem;
+}
+
+.main-seccion__form {
+    width: 100%;
+    height: 50%;
+    display: grid;
+    place-content: center;
+    margin: 0;
+    padding: 0;
+    transition: transform 1s ease;
+}
+
+.main-seccion__form * {
+    padding: .5rem;
+    margin: .5rem;
+    width: 100%;
+}
+
+.main-seccion__container {
+    width: 100%;
+    margin: 2rem auto;
+    display: flex;
+    min-height: 35vh;
+    background-color: black;   
+}
+
+.m-s-container-bolita {
+    margin: auto;
+    width: 2rem;
+    height: 2rem;
+    border-radius: 50%;
+    background-color: beige;
+}
+
+.main-seccion__buttons {
+    width: 100%;
+    height: 10%;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.main-seccion__buttons * {
+    width: 15%;
+    height: 100%;
+    padding: 0;
+    margin:0;
+    text-align: center;
+}
+
+/* medias queries */
+
+@media screen and (min-width: 768px) {
+    .header-logo {
+        justify-content: flex-start;
+    }
+    
+    .header-logo__p {
+        font-size: 1.5rem;
+        padding-left: 0;
+    }
+    
+    .header-nav__ul {
+        width: 20%;
+    }
+    
+    .main-seccion__form {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-evenly;
+        align-items: center;
+    }
+    
+    .main-seccion__form * {
+        padding: 1rem;
+        width: 20%;
+        margin:0;
+        cursor: pointer;
+    }
+    
+    .main-seccion__reloj * {
+        font-size: 6rem;
+        padding:0;
+        margin:2rem;
+    }
+
+    .main-seccion__container {
+        width: 1000px;
+        min-height: 50vh;
+    }
+
+    .m-s-container-bolita {
+        width: 4rem;
+        height: 4rem;
+    }
+    
+
+    .main-seccion__buttons {
+        display: none;
+    }
+}
+
