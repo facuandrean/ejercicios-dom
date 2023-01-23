@@ -10,6 +10,9 @@ const $bolita = d.querySelector('.m-s-container-bolita');
 const $containerBolita = d.querySelector('.main-seccion__container');
 let x = 0, y = 0;
 
+// btn para scroll top
+const $scrollBtn = d.querySelector(".btn-scroll__top");
+
 d.addEventListener('click', (e) => {
 
     // inicio del menu de hamburguesa
@@ -125,7 +128,17 @@ d.addEventListener('click', (e) => {
     $bolita.style.transform = `translate(${x*10}px, ${y*10}px)`;
 
     // fin de mover la bolita
+
+    // inicio scrolltop boton
+
+    if (e.target.matches(".btn-scroll__top")) {
+        window.scrollTo({
+            behavior: "smooth",
+            top: 0
+        })
+    }
     
+    // fin scrolltop boton
 })
 
 d.addEventListener('keydown', (e) => {
@@ -217,3 +230,16 @@ d.addEventListener('DOMContentLoaded', (e) => {
     // fin de countdown
 
 })
+
+
+d.addEventListener('scroll', (e) => {
+
+    if (window.scrollY >= 650) {
+        $scrollBtn.style.opacity = '1';
+        $scrollBtn.classList.remove("hidden");
+    } else {
+        $scrollBtn.style.opacity = '0';
+        $scrollBtn.classList.add("hidden");
+    }
+
+});
