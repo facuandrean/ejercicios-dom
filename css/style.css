@@ -218,6 +218,8 @@ body {
     height: 75%;
     display: grid;
     place-content: center;
+    font-size: 2.5rem;
+    font-weight: bold;
 }
 
 .main-seccion__countdown * {
@@ -278,6 +280,10 @@ body {
 
     .main-seccion__buttons {
         display: none;
+    }
+
+    .main-seccion__countdown {
+        font-size: 5rem;
     }
 
     .main-seccion__countdown * {

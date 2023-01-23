@@ -213,8 +213,9 @@ d.addEventListener('DOMContentLoaded', (e) => {
         }
 
     }, MILLISECONDS_OF_A_SECOND);
-    
+
 
     // fin de countdown
 
 })
+
