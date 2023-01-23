@@ -162,11 +162,11 @@ d.addEventListener('keydown', (e) => {
 
 d.addEventListener('DOMContentLoaded', (e) => {
 
-        // inicio de countdown
+    // inicio de countdown
 
     // variables
 
-    const DATE_TARGET = new Date('Jan 23, 2023 15:00:00');
+    const DATE_TARGET = new Date('Jan 23, 2023 18:39:00');
 
     const $countdown = d.querySelector('.main-seccion__countdown');
     const SPAN_DAYS = document.querySelector('span#days');
@@ -176,7 +176,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
     
     let REMAINING_DAYS = 0, REMAINING_HOURS = 0, REMAINING_MINUTES = 0, REMAINING_SECONDS = 0;
     
-    // Milliseconds for the calculations
+    // miliseguns para los cálculos
     const MILLISECONDS_OF_A_SECOND = 1000;
     const MILLISECONDS_OF_A_MINUTE = MILLISECONDS_OF_A_SECOND * 60;
     const MILLISECONDS_OF_A_HOUR = MILLISECONDS_OF_A_MINUTE * 60;
@@ -207,12 +207,13 @@ d.addEventListener('DOMContentLoaded', (e) => {
         SPAN_MINUTES.textContent = REMAINING_MINUTES;
         SPAN_SECONDS.textContent = REMAINING_SECONDS;
 
-        if ((REMAINING_DAYS <= 0) && (REMAINING_HOURS <= 0) && (REMAINING_MINUTES <= 0) && (REMAINING_SECONDS <= 0)) {
+        if (DURATION <= 0) {
             clearInterval(countdown)
             $countdown.textContent = '¡Feliz Cumpleaños!';
         }
 
     }, MILLISECONDS_OF_A_SECOND);
+    
 
     // fin de countdown
 
