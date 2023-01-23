@@ -23,7 +23,6 @@ html {
 
 body {
     overflow-x: hidden;
-    /* overflow: hidden; */
     margin: 0;
 }
 
@@ -215,6 +214,22 @@ body {
     text-align: center;
 }
 
+.main-seccion__countdown {
+    height: 75%;
+    display: grid;
+    place-content: center;
+}
+
+.main-seccion__countdown * {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.main-seccion__countdown bold {
+    display: none;
+}
+
+
 /* medias queries */
 
 @media screen and (min-width: 768px) {
@@ -260,10 +275,22 @@ body {
         width: 4rem;
         height: 4rem;
     }
-    
 
     .main-seccion__buttons {
         display: none;
+    }
+
+    .main-seccion__countdown * {
+        font-size: 3.2rem;
+        font-weight: bold;
+    }
+
+    .main-seccion__countdown br {
+        display: none;
+    }
+
+    .main-seccion__countdown bold {
+        display: inline-block;
     }
 }
 

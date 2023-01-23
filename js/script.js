@@ -159,3 +159,67 @@ d.addEventListener('keydown', (e) => {
     // fin mueve la bolita
     
 });
+
+d.addEventListener('DOMContentLoaded', (e) => {
+
+    // inicio de countdown
+
+    //===
+    // VARIABLES
+    //===
+    // const DATE_TARGET = new Date('02/07/2023 0:01 AM');
+    // const DATE_TARGET = new Date('01/22/2023 11:24 PM');
+    const DATE_TARGET = new Date('Thu Feb 07 2023');
+    // const DATE_TARGET = new Date('Sun Jan 22 2023 11:28 PM');
+    // Fri Jul 02 2021 12:44:45
+    // DOM for render
+    const $countdown = d.querySelector('.main-seccion__countdown');
+    const SPAN_DAYS = document.querySelector('span#days');
+    const SPAN_HOURS = document.querySelector('span#hours');
+    const SPAN_MINUTES = document.querySelector('span#minutes');
+    const SPAN_SECONDS = document.querySelector('span#seconds');
+    
+    // Milliseconds for the calculations
+    const MILLISECONDS_OF_A_SECOND = 1000;
+    const MILLISECONDS_OF_A_MINUTE = MILLISECONDS_OF_A_SECOND * 60;
+    const MILLISECONDS_OF_A_HOUR = MILLISECONDS_OF_A_MINUTE * 60;
+    const MILLISECONDS_OF_A_DAY = MILLISECONDS_OF_A_HOUR * 24;
+
+    //===
+    // FUNCTIONS
+    //===
+
+    /**
+     * Method that updates the countdown and the sample
+     */
+    function updateCountdown() {
+        // Calcs
+        const NOW = new Date()
+        const DURATION = DATE_TARGET - NOW;
+        const REMAINING_DAYS = Math.floor(DURATION / MILLISECONDS_OF_A_DAY);
+        const REMAINING_HOURS = Math.floor((DURATION % MILLISECONDS_OF_A_DAY) / MILLISECONDS_OF_A_HOUR);
+        const REMAINING_MINUTES = Math.floor((DURATION % MILLISECONDS_OF_A_HOUR) / MILLISECONDS_OF_A_MINUTE);
+        const REMAINING_SECONDS = Math.floor((DURATION % MILLISECONDS_OF_A_MINUTE) / MILLISECONDS_OF_A_SECOND);
+
+        // Render
+        SPAN_DAYS.textContent = REMAINING_DAYS;
+        SPAN_HOURS.textContent = REMAINING_HOURS;
+        SPAN_MINUTES.textContent = REMAINING_MINUTES;
+        SPAN_SECONDS.textContent = REMAINING_SECONDS;
+
+    }
+
+    //===
+    // INIT
+    //===
+    updateCountdown();
+    // Refresh every second
+    let countdown = setInterval(updateCountdown, MILLISECONDS_OF_A_SECOND);
+
+    if (countdown <= 0) {
+        $countdown.outerHTML = '¡Feliz Cumpleaños!';
+    }
+
+    // fin de countdown
+
+})
