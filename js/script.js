@@ -166,7 +166,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     // variables
 
-    const DATE_TARGET = new Date('Jan 23, 2023 18:39:00');
+    const DATE_TARGET = new Date('Feb 07, 2023 00:00:00');
 
     const $countdown = d.querySelector('.main-seccion__countdown');
     const SPAN_DAYS = document.querySelector('span#days');
