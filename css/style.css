@@ -60,6 +60,10 @@ button, input {
     display: none;
 }
 
+.hidden {
+    visibility: hidden;
+}
+
 /* Site Properties */
 
 body {
@@ -229,6 +233,19 @@ body {
 
 .main-seccion__countdown bold {
     display: none;
+}
+
+.btn-scroll__top {
+    position: fixed;
+    right: 0vw;
+    bottom: 0vh;
+    padding: 1rem;
+    margin-right: 1rem;
+    margin-bottom: 1rem;
+    border-radius: 50px;
+    background: #114d4d;
+    transition: all .3s ease-in-out;
+    cursor: pointer;
 }
 
 
