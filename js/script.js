@@ -13,6 +13,45 @@ let x = 0, y = 0;
 // btn para scroll top
 const $scrollBtn = d.querySelector(".btn-scroll__top");
 
+// inicio tema dark-light con localStorage
+
+const $btnMoon = d.querySelector("#moon"), 
+$btnSun = d.querySelector("#sun"), 
+$selectors = d.querySelectorAll("[data-dark]"),
+$selectors2 = d.querySelectorAll("[data-dark-2]");;
+
+const lightMode = () => {
+    $btnMoon.removeAttribute("style");
+    $btnSun.setAttribute("style", 'display: none');
+
+    $selectors.forEach(el => {
+        el.classList.remove("dark-mode");
+        el.classList.add("light-mode");
+    });
+
+    $selectors2.forEach(el => {
+        el.classList.remove("dark-mode-2");
+        el.classList.add("light-mode-2");
+    });
+};
+
+const darkMode = () => {
+    $btnMoon.setAttribute("style", 'display: none');
+    $btnSun.removeAttribute("style");
+
+    $selectors.forEach(el => {
+        el.classList.add("dark-mode");
+        el.classList.remove("light-mode");
+    });
+
+    $selectors2.forEach(el => {
+        el.classList.add("dark-mode-2");
+        el.classList.remove("light-mode-2");
+    });
+};
+
+// fin tema dark-light con localStorage
+
 d.addEventListener('click', (e) => {
 
     // inicio del menu de hamburguesa
@@ -140,48 +179,17 @@ d.addEventListener('click', (e) => {
     
     // fin scrolltop boton
 
-    // inicio boton tema dark-light
-
-    const $btnMoon = d.querySelector("#moon"), 
-    $btnSun = d.querySelector("#sun"), 
-    $selectors = d.querySelectorAll("[data-dark]"),
-    $selectors2 = d.querySelectorAll("[data-dark-2]");;
+    // inicio boton tema dark-light con localStorage
 
     if (e.target.matches("#moon")) {
-        $btnMoon.setAttribute("style", 'display: none');
-        $btnSun.removeAttribute("style");
-
-        $selectors.forEach(el => {
-            el.classList.add("dark-mode");
-            el.classList.remove("light-mode");
-        });
-
-        $selectors2.forEach(el => {
-            el.classList.add("dark-mode-2");
-            el.classList.remove("light-mode-2");
-        });
-
-
-
-
+        darkMode();
+        localStorage.setItem("tema","dark");
     } else if (e.target.matches("#sun")) {
-        $btnMoon.removeAttribute("style");
-        $btnSun.setAttribute("style", 'display: none');
-
-        $selectors.forEach(el => {
-            el.classList.remove("dark-mode");
-            el.classList.add("light-mode");
-        });
-
-        $selectors2.forEach(el => {
-            el.classList.remove("dark-mode-2");
-            el.classList.add("light-mode-2");
-        });
-
-
+        lightMode();
+        localStorage.setItem("tema","light");
     }
 
-    // fin bototn tema dark-light
+    // fin bototn tema dark-light con localStorage
 })
 
 d.addEventListener('keydown', (e) => {
@@ -272,6 +280,20 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     // fin de countdown
 
+    // inicio tema dark-light con localStorage
+
+    if (localStorage.getItem("tema") === null) {
+        // si no existe una variable del localstorage, la creo con un valor por defecto
+        localStorage.setItem("tema", "light");
+    }
+
+    if (localStorage.getItem("tema") === "light") {
+        lightMode();
+    } else if (localStorage.getItem("tema") === "dark") {
+        darkMode();
+    }
+
+    // fin tema dark-light con localStorage
 })
 
 
