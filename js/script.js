@@ -139,6 +139,49 @@ d.addEventListener('click', (e) => {
     }
     
     // fin scrolltop boton
+
+    // inicio boton tema dark-light
+
+    const $btnMoon = d.querySelector("#moon"), 
+    $btnSun = d.querySelector("#sun"), 
+    $selectors = d.querySelectorAll("[data-dark]"),
+    $selectors2 = d.querySelectorAll("[data-dark-2]");;
+
+    if (e.target.matches("#moon")) {
+        $btnMoon.setAttribute("style", 'display: none');
+        $btnSun.removeAttribute("style");
+
+        $selectors.forEach(el => {
+            el.classList.add("dark-mode");
+            el.classList.remove("light-mode");
+        });
+
+        $selectors2.forEach(el => {
+            el.classList.add("dark-mode-2");
+            el.classList.remove("light-mode-2");
+        });
+
+
+
+
+    } else if (e.target.matches("#sun")) {
+        $btnMoon.removeAttribute("style");
+        $btnSun.setAttribute("style", 'display: none');
+
+        $selectors.forEach(el => {
+            el.classList.remove("dark-mode");
+            el.classList.add("light-mode");
+        });
+
+        $selectors2.forEach(el => {
+            el.classList.remove("dark-mode-2");
+            el.classList.add("light-mode-2");
+        });
+
+
+    }
+
+    // fin bototn tema dark-light
 })
 
 d.addEventListener('keydown', (e) => {

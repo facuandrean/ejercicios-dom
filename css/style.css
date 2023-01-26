@@ -3,7 +3,19 @@
 :root {
     --font-primary: 'Ubuntu', sans-serif;
     --container-width: 1200px;
-    --link-color: #509EE3;
+
+    --color-1: #23036a;
+    --color-2: #30009c;
+    --color-3: #3700b3;
+    --color-3-2: rgba(83, 9, 255, 1);
+    --color-4: #5600e8;
+    --color-5: #6200ee;
+    --color-6: #7f39fb;
+    --color-7: #985eff;
+    --color-8: #bb86fc;
+    --color-9: #dbb2ff;
+    --color-10: #f2e7fe;
+
 }
 
 /* Reset */
@@ -39,7 +51,7 @@ a {
 }
 
 a:hover {
-    color: var(--link-color);
+    color: black;
     font-size: 1.4rem;
     opacity: 1;
 }
@@ -52,6 +64,11 @@ li {
 
 button, input {
     outline: none;
+    transition: opacity .5s ease-out;
+}
+
+button:hover {
+    opacity: .8;
 }
 
 /* Utilities */
@@ -68,6 +85,7 @@ button, input {
 
 body {
     position: relative;
+    background-color: var(--color-10);
 }
 
 .header {
@@ -78,7 +96,7 @@ body {
     align-items: center;
     padding-left: 5%;
     padding-right: 5%;
-    background-color: #114d4d;
+    background-color: var(--color-2);
     position: sticky;
     top: 0;
     z-index: 9999;
@@ -109,7 +127,7 @@ body {
     position: fixed;
     top: 10vh;
     left: 0;
-    background-color: rgb(194, 194, 172);
+    background-color: var(--color-10);
     padding:0;
     margin:0;
     height: 100vh;
@@ -141,7 +159,7 @@ body {
     min-height: 100vh;
     height: 100vh;
     text-align: center;
-    background-color: beige;
+    background-color: var(--color-9);
 }
 
 .main-seccion__h2 {
@@ -183,6 +201,13 @@ body {
     padding: .5rem;
     margin: .5rem;
     width: 100%;
+    background-color: var(--color-10);
+    border: 2px solid var(--color-2);
+    color: var(--color-2);
+}
+
+.main-seccion__form *:disabled {
+    background-color: rgb(179, 179, 179);
 }
 
 .main-seccion__container {
@@ -190,7 +215,8 @@ body {
     margin: 2rem auto;
     display: flex;
     min-height: 35vh;
-    background-color: black;   
+    background-color: black;
+    overflow: hidden;   
 }
 
 .m-s-container-bolita {
@@ -198,7 +224,7 @@ body {
     width: 2rem;
     height: 2rem;
     border-radius: 50%;
-    background-color: beige;
+    background-color: var(--color-10);
 }
 
 .main-seccion__buttons {
@@ -216,6 +242,9 @@ body {
     padding: 0;
     margin:0;
     text-align: center;
+    background-color: var(--color-10);
+    border: 2px solid var(--color-2);
+    color: var(--color-2);
 }
 
 .main-seccion__countdown {
@@ -240,14 +269,53 @@ body {
     right: 0vw;
     bottom: 0vh;
     padding: 1rem;
-    margin-right: 1rem;
-    margin-bottom: 1rem;
+    margin-right: .5rem;
+    margin-bottom: .5rem;
     border-radius: 50px;
-    background: #114d4d;
+    background: var(--color-2);
     transition: all .3s ease-in-out;
     cursor: pointer;
+    font-size: 1.2rem;
 }
 
+.header-nav__dark-light {
+    width: 0;
+    height: 0;
+    padding: 1.5rem;
+    position: absolute;
+    bottom: 12vh;
+    left: 5%;
+    display: grid;
+    place-content: center;
+    cursor: pointer;
+    border-radius: 50px;
+    background-color: var(--color-2);
+    font-size: 2rem;
+}
+
+.dark-mode {
+    background-color: var(--color-1);
+    color: var(--color-10);
+    transition: all .5s ease-in-out;
+}
+
+.light-mode {
+    background-color: var(--color-9);
+    color: black;
+    transition: all .5s ease-in-out;
+}
+
+.dark-mode-2 {
+    background-color: var(--color-3-2);
+    color: var(--color-10);
+    transition: all .5s ease-in-out;
+}
+
+.light-mode-2 {
+    background-color: var(--color-10);
+    color: black;
+    transition: all .5s ease-in-out;
+}
 
 /* medias queries */
 

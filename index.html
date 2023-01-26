@@ -12,27 +12,33 @@
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Ubuntu:wght@300;400;500;700&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/489d45fb25.js" crossorigin="anonymous"></script>
     
 </head>
-<body>
+<body data-dark-2>
 
     <header class="header">
 
         <div class="header-logo">
-            <p class="header-logo__p">Ejercicios del DOM</p>
+            <p class="header-logo__p" style="color: var(--color-10)">Ejercicios del DOM</p>
         </div>
 
         <nav class="header-nav">
 
-            <ul class="header-nav__ul none">
-                <li class="h-n-ul-li"><a href="#seccion-1" class="h-n-ul-li__a">Reloj digital y Alarma Sonora</a></li>
-                <li class="h-n-ul-li"><a href="#seccion-2" class="h-n-ul-li__a">Mueve la bolita</a></li>
-                <li class="h-n-ul-li"><a href="#seccion-3" class="h-n-ul-li__a">Countdown</a></li>
-                <li class="h-n-ul-li"><a href="#seccion-4" class="h-n-ul-li__a">SECCION 4</a></li>
-                <li class="h-n-ul-li"><a href="#seccion-5" class="h-n-ul-li__a">SECCION 5</a></li>
-            </ul> 
-
-            <button class="hamburger hamburger--vortex" type="button">
+            <ul class="header-nav__ul none" data-dark-2>
+                <li class="h-n-ul-li"><a href="#seccion-1" class="h-n-ul-li__a" data-dark-2>Reloj digital y Alarma Sonora</a></li>
+                <li class="h-n-ul-li"><a href="#seccion-2" class="h-n-ul-li__a" data-dark-2>Mueve la bolita</a></li>
+                <li class="h-n-ul-li"><a href="#seccion-3" class="h-n-ul-li__a" data-dark-2>Countdown</a></li>
+                <li class="h-n-ul-li"><a href="#seccion-4" class="h-n-ul-li__a" data-dark-2>SECCION 4</a></li>
+                <li class="h-n-ul-li"><a href="#seccion-5" class="h-n-ul-li__a" data-dark-2>SECCION 5</a></li>
+                <button class="header-nav__dark-light" style="color: var(--color-10)">
+                    <i class="fa-solid fa-moon" id="moon"></i>
+                    <i class="fa-solid fa-sun" id="sun" style="display: none;"></i>
+                </button>
+            </ul>
+        
+            <button class="hamburger hamburger--vortex" style="color: var(--color-10)" type="button">
                 <span class="hamburger-box">
                     <span class="hamburger-inner"></span>
                 </span>
@@ -44,7 +50,7 @@
 
     <main class="main">
 
-        <section class="main-seccion" id="seccion-1">
+        <section class="main-seccion" id="seccion-1" data-dark>
             <h2 class="main-seccion__h2">Reloj digital y Alarma Sonora</h2>
             <div class="main-seccion__reloj"></div>
             <form class="main-seccion__form">
@@ -56,7 +62,7 @@
             <audio src="assets/sounds/alarm-clock.mp3" id="audio"></audio>
         </section>
 
-        <section class="main-seccion" id="seccion-2">
+        <section class="main-seccion" id="seccion-2" data-dark>
             <h2 class="main-seccion__h2">Mueve la bolita</h2>
             <div class="main-seccion__container">
                 <div class="m-s-container-bolita"></div>
@@ -69,7 +75,7 @@
             </div>
         </section>
         
-        <section class="main-seccion" id="seccion-3">
+        <section class="main-seccion" id="seccion-3" data-dark>
             <h2 class="main-seccion__h2">Countdown</h2>
             <div class="main-seccion__countdown">
                 <p>
@@ -78,19 +84,19 @@
             </div> 
         </section>
 
-        <section class="main-seccion" id="seccion-4">
+        <section class="main-seccion" id="seccion-4" data-dark>
             <h2 class="main-seccion__h2">SECCIÓN 4</h2>
         </section>
 
-        <section class="main-seccion" id="seccion-5">
+        <section class="main-seccion" id="seccion-5" data-dark>
             <h2 class="main-seccion__h2">SECCIÓN 5</h2>
         </section>
 
     </main>
 
-    <div class="btn-scroll__top hidden">
+    <button class="btn-scroll__top hidden" style="color: var(--color-10)">
         &#11014
-    </div>
+    </button>
 
     <script src="js/script.js"></script>
     
