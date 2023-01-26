@@ -4,17 +4,17 @@
     --font-primary: 'Ubuntu', sans-serif;
     --container-width: 1200px;
 
-    --color-1: #23036a;
-    --color-2: #30009c;
-    --color-3: #3700b3;
-    --color-3-2: rgba(83, 9, 255, 1);
-    --color-4: #5600e8;
-    --color-5: #6200ee;
-    --color-6: #7f39fb;
-    --color-7: #985eff;
-    --color-8: #bb86fc;
-    --color-9: #dbb2ff;
-    --color-10: #f2e7fe;
+    --color-1: #151625;
+    --color-2: #1F2030;
+    --color-3: #3D3F5F;
+    --color-3-2: rgb(87, 89, 126);
+    --color-4: #4C557D;
+    --color-5: #5A6A9A;
+    --color-6: #54AFE1;
+    --color-7: #A2CFEB;
+    --color-8: #C9DFF0;
+    --color-9: #DDE7F2;
+    --color-10: #F0EFF4;
 
 }
 
