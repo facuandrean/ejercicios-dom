@@ -1,9 +1,28 @@
 // Usamos la delegación de eventos.
 
 const d = document;
+const w = window;
 
-// seccion 1: reloj
+// inicio del menu de hamburguesa
+
+const $btnHamburguer = d.querySelector(".hamburger"), 
+        $ul = d.querySelector('.header-nav__ul');
+
+// fin del menu de hamburguesa
+
+// inicio del reloj digital
+
 let clock;
+
+const $form = d.querySelector('.main-seccion__form'), $reloj = d.querySelector('.main-seccion__reloj'), $btnShow = d.getElementById('show');
+
+// fin del reloj digital
+
+// inicio de alarma
+
+const $audio = d.querySelector("#audio"), $btnOn = d.querySelector("#alarmOn");
+
+// fin de alarma
 
 // seccion 2: mover la bolita
 const $bolita = d.querySelector('.m-s-container-bolita');
@@ -52,12 +71,25 @@ const darkMode = () => {
 
 // fin tema dark-light con localStorage
 
+
+// inicio del responsible responsive design
+
+const $maps = d.getElementById('maps');
+
+const contenidoMobile = ($elemento, texto) => {
+    $elemento.innerHTML = texto;
+}
+
+const contenidoDesktop = ($elemento, texto) => {
+    $elemento.innerHTML = texto;
+}
+
+// fin del responsible responsive design
+
+
 d.addEventListener('click', (e) => {
 
     // inicio del menu de hamburguesa
-
-    const $btnHamburguer = d.querySelector(".hamburger"), 
-          $ul = d.querySelector('.header-nav__ul');
 
     if ((e.target.matches('.hamburger')) || (e.target.matches('.hamburger span'))) {
         
@@ -88,8 +120,6 @@ d.addEventListener('click', (e) => {
     // fin del menu de hamburguesa
 
     // inicio reloj digital
-
-    const $form = d.querySelector('.main-seccion__form'), $reloj = d.querySelector('.main-seccion__reloj'), $btnShow = d.getElementById('show');
     
     if (e.target.matches('.main-seccion__form #show')) {
 
@@ -125,8 +155,6 @@ d.addEventListener('click', (e) => {
     // fin del reloj digital
 
     // inicio de alarma
-
-    const $audio = d.querySelector("#audio"), $btnOn = d.querySelector("#alarmOn");
 
     if (e.target.matches('#alarmOn')) {
 
@@ -294,10 +322,28 @@ d.addEventListener('DOMContentLoaded', (e) => {
     }
 
     // fin tema dark-light con localStorage
+
+        // inicio responsible responsive design
+    
+        if (window.matchMedia("(min-width: 1024px)").matches) {
+            /* La pantalla tiene al menos 1024 píxeles de ancho */
+
+            contenidoDesktop($maps, `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20358508.3485435!2d-120.58833439443815!3d60.37122453692365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b0d03d337cc6ad9%3A0x9968b72aa2438fa5!2zQ2FuYWTDoQ!5e0!3m2!1ses!2sar!4v1674861102205!5m2!1ses!2sar" width="650" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`)
+            
+        } else {
+            /* La pantalla tiene menos de 1024 píxeles de ancho */
+            contenidoMobile($maps, `<a href="https://goo.gl/maps/7Ad1bxKcYUwWgFm27" target="_blank"> Ver Mapa </a>`);
+            
+        }
+        
+        // fin responsible responsive design
+
 })
 
 
 d.addEventListener('scroll', (e) => {
+
+    // inicio boton scroll top
 
     if (window.scrollY >= 650) {
         $scrollBtn.style.opacity = '1';
@@ -306,5 +352,23 @@ d.addEventListener('scroll', (e) => {
         $scrollBtn.style.opacity = '0';
         $scrollBtn.classList.add("hidden");
     }
+
+    // fin boton scroll top
+
+});
+
+w.addEventListener('resize' , (e) => {
+
+    // inicio responsible responsive design
+    
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+        /* La pantalla tiene al menos 1024 píxeles de ancho */
+        contenidoDesktop($maps, `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20358508.3485435!2d-120.58833439443815!3d60.37122453692365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b0d03d337cc6ad9%3A0x9968b72aa2438fa5!2zQ2FuYWTDoQ!5e0!3m2!1ses!2sar!4v1674861102205!5m2!1ses!2sar" width="auto" height="auto" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`)
+    } else {
+        /* La pantalla tiene menos de 1024 píxeles de ancho */
+        contenidoMobile($maps, `<a href="https://goo.gl/maps/7Ad1bxKcYUwWgFm27" target="_blank"> Ver Mapa </a>`);
+    }
+    
+    // fin responsible responsive design
 
 });
