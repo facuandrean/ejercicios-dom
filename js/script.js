@@ -86,6 +86,13 @@ const contenidoDesktop = ($elemento, texto) => {
 
 // fin del responsible responsive design
 
+// inicio responsive tester
+
+const $formResponsiveTester = d.querySelector(".main-seccion__form-2")
+
+let ventana, ventanaOpen;
+
+// fin responsive tester
 
 d.addEventListener('click', (e) => {
 
@@ -218,6 +225,17 @@ d.addEventListener('click', (e) => {
     }
 
     // fin bototn tema dark-light con localStorage
+
+    // inicio responsive tester
+
+    if (e.target === $formResponsiveTester.cerrar) {
+        if (ventanaOpen == true) {
+            ventana.close()
+            ventanaOpen = false;
+        }
+    }
+
+    // fin responsive tester
 })
 
 d.addEventListener('keydown', (e) => {
@@ -372,3 +390,17 @@ w.addEventListener('resize' , (e) => {
     // fin responsible responsive design
 
 });
+
+d.addEventListener("submit", (e) => {
+    if (e.target === $formResponsiveTester) {
+        // comparamos si el e.target (objeto o elemento que originó el evento) es igual a la variable de la derecha, es lo mismo que poner e.target.matches('selector de esa variable) para asi poder detectar quien desencadenó el evento
+        
+        // cancelamos la acción por defecto del formulario, cuya es enviar la información que contenga hacia algun lado. Si no tiene el atributo action con una url, esa información es enviada hacia la misma url donde se ejecuta el envio de los datos y por ende se autorecarga la página con esos datos enviados. Si tiene el atributo action esa información es enviada hacia esa url por ende no se recarga nuestra página. Esto se hace porque estamos controlando ese formulario con javascript, y esto es para que el formulario no autoprocese la página donde se encuentra ya que no tiene un atributo action con una url para que se procese en otra url que no sea nuestra página.
+        e.preventDefault();
+
+        ventana = window.open($formResponsiveTester.direccion.value, "ventana", `innerWidth=${$formResponsiveTester.ancho.value}, innerHeight=${$formResponsiveTester.alto.value}`);
+
+        ventanaOpen = true;
+
+    }
+})
