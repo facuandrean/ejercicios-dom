@@ -94,6 +94,12 @@ let ventana, ventanaOpen;
 
 // fin responsive tester
 
+// inicio deteccion de conexion del usuario
+
+const $online = d.querySelector('.online'), $offline = d.querySelector('.offline');
+
+// fin deteccion de conexión del usuario
+
 d.addEventListener('click', (e) => {
 
     // inicio del menu de hamburguesa
@@ -451,7 +457,6 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
 })
 
-
 d.addEventListener('scroll', (e) => {
 
     // inicio boton scroll top
@@ -497,3 +502,35 @@ d.addEventListener("submit", (e) => {
 
     }
 })
+
+// inicio deteccion de conexión del usuario
+
+w.addEventListener('online', (e) => {
+    if (navigator.onLine) {
+        $online.classList.toggle('none');
+
+        setTimeout(() => {
+            $online.style.animationName = 'fadeOut';
+        }, 3000);
+
+        $offline.style.animationName = 'fadeIn';
+
+        $offline.classList.add('none');
+    }
+})
+
+w.addEventListener('offline', (e) => {
+    if (!navigator.onLine) {
+        $offline.classList.toggle('none');
+
+        setTimeout(() => {
+            $offline.style.animationName = 'fadeOut';
+        }, 3000);
+
+        $online.style.animationName = 'fadeIn';
+        
+        $online.classList.add('none');
+    }
+})
+
+// fin deteccion de conexión del usuario

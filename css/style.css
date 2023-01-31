@@ -86,6 +86,47 @@ button:hover {
     visibility: hidden;
 }
 
+.online, 
+.offline {
+    animation-name: fadeIn;
+    animation-duration: 1.5s;
+    animation-timing-function: ease;
+    animation-fill-mode: forwards;
+}
+
+@keyframes fadeIn {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+}
+
+@keyframes fadeOut {
+    from {
+      opacity: 1;
+    }
+    to {
+      opacity: 0;
+    }
+}
+
+.online h2,
+.offline h2 {
+    font-size: 1rem;
+    font-weight: 300;
+    width: 100%;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    margin: 0;
+    padding: .2rem;
+    background-color: blue;
+    color: white;
+    text-align: center;
+}
+
 /* Site Properties */
 
 body {
