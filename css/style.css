@@ -56,6 +56,11 @@ a:hover {
     opacity: 1;
 }
 
+ul {
+    padding: 0;
+    margin: 0;
+}
+
 li {
     list-style: none;
     padding: 0;
@@ -357,6 +362,13 @@ body {
 .main-seccion__form-2 input[type="submit"] {
     width: 30%;
     cursor: pointer;
+}
+
+.main-seccion__informacionUA {
+    max-width: 90%;
+    min-width: 30%;
+    margin: 0 auto;
+    height: 50%;
 }
 
 

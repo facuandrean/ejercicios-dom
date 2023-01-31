@@ -341,20 +341,113 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     // fin tema dark-light con localStorage
 
-        // inicio responsible responsive design
-    
-        if (window.matchMedia("(min-width: 1024px)").matches) {
-            /* La pantalla tiene al menos 1024 píxeles de ancho */
+    // inicio responsible responsive design
 
-            contenidoDesktop($maps, `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20358508.3485435!2d-120.58833439443815!3d60.37122453692365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b0d03d337cc6ad9%3A0x9968b72aa2438fa5!2zQ2FuYWTDoQ!5e0!3m2!1ses!2sar!4v1674861102205!5m2!1ses!2sar" width="650" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`)
-            
-        } else {
-            /* La pantalla tiene menos de 1024 píxeles de ancho */
-            contenidoMobile($maps, `<a href="https://goo.gl/maps/7Ad1bxKcYUwWgFm27" target="_blank"> Ver Mapa </a>`);
-            
-        }
+    if (window.matchMedia("(min-width: 1024px)").matches) {
+        /* La pantalla tiene al menos 1024 píxeles de ancho */
+
+        contenidoDesktop($maps, `<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d20358508.3485435!2d-120.58833439443815!3d60.37122453692365!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4b0d03d337cc6ad9%3A0x9968b72aa2438fa5!2zQ2FuYWTDoQ!5e0!3m2!1ses!2sar!4v1674861102205!5m2!1ses!2sar" width="650" height="300" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>`)
         
-        // fin responsible responsive design
+    } else {
+        /* La pantalla tiene menos de 1024 píxeles de ancho */
+        contenidoMobile($maps, `<a href="https://goo.gl/maps/7Ad1bxKcYUwWgFm27" target="_blank"> Ver Mapa </a>`);
+        
+    }
+    
+    // fin responsible responsive design
+
+    // inicio deteccion de dispositivos 
+
+    const $divUA = d.querySelector(".main-seccion__informacionUA");
+
+    // las siguientes variables nos ayudan a detectar si el usuario nos visita desde un dispositivo x.
+    const isMobile = {
+        android: () => navigator.userAgent.match(/android/i),
+        ios: () => navigator.userAgent.match(/iphone|ipad|ipod/i),
+        windows: () => navigator.userAgent.match(/windows phone/i),
+        any: function() {
+            return this.android() || this.ios() || this.windows();
+        }
+    };
+
+    const isDesktop = {
+        linux: () => navigator.userAgent.match(/linux/i),
+        mac: () => navigator.userAgent.match(/mac os/i),
+        windows: () => navigator.userAgent.match(/windows nt/i),
+        any: function () {
+            return this.linux() || this.mac() || this.windows();
+        }
+    };
+
+    // esta variables nos ayuda a detectar en qué navegador web está el usuario.
+    const isBrowser = {
+        chrome: () => navigator.userAgent.match(/chrome/i),
+        safari: () => navigator.userAgent.match(/safari/i),
+        firefox: () => navigator.userAgent.match(/firefox/i),
+        opera: () => navigator.userAgent.match(/opera|opera mini/i),
+        ie: () => navigator.userAgent.match(/msie|iemobile/i),
+        edge: () => navigator.userAgent.match(/edge/i),
+        any: function () {
+            return (
+                this.ie() ||
+                this.edge() ||
+                this.chrome() ||
+                this.safari() ||
+                this.firefox() ||
+                this.opera()
+            );
+        }
+    };
+
+    // analisis de los objetos:
+    // el objeto isMobile tiene 4 propiedades: android, ios, windows, any. Las primeras 3 están declaradas en una arrow function, mientras que la ultima, any, está declarada en una función anónima, y hace referencia a las otras 3 propiedades que tiene el objeto.
+    // userAgent.match() recibe una expresión regular que lo que va a hacer es tratar de buscar si en la cadena de texto del userAgent encontró la palabra android, iphone, ipad, ipod o windows phone. La i es una bandera de las expresiones regulares que significa que no se toman mayusculas y minusculas.
+    // si lo probamos y ponemos console.log(isMobile.android()) por ejemplo, nos devuelve información, pero si no estamos en un android y activamos este método, entonces nos devuelve null.
+    // como vemos, esto nos sirve para crear funcionalidades particulares para cada uno de estos disintos dispositivos.
+    // la propiedad any es para que detecte cualquier dispositivo, da igual el que sea, pero que detecte alguno de los definidos anteriormente. Es una funcion anónima por el hecho del this de las arrow function que es el contexto del objeto y no de dentro del objeto, y necesitamos el contexto de dentro del objeto.
+
+    // lo mismo para los otros dos objetos
+
+    $divUA.innerHTML = `
+    <ul>
+        <li>User Agent: <b>${navigator.userAgent}</b></li>
+        <li>Plataforma: <b>${isMobile.any() ? isMobile.any() : isDesktop.any()}</b></li>
+        <li>Navegador: <b>${isBrowser.any()}</b></li>
+    </ul>
+    `
+
+    // <li>Plataforma: <b>${isMobile.any() ? isMobile.any() : isDesktop.any()}</b></li> lo que hace es lo siguiente:
+    // pregunta si está en algun dispositivo movil, cualquiera de los 3, si eso es verdad, entonces imprime ese dispositivo, si no lo es, entonces estamos en un escritorio e imprime ese dispositivo.
+
+    // con esto podemos hacer contenido exclusivo:
+
+    if (isBrowser.chrome()) {
+        $divUA.innerHTML += `<p><mark>Este contenido solo se ve en Chrome</mark></p>`
+    }
+
+    if (isBrowser.firefox()) {
+        $divUA.innerHTML += `<p><mark>Este contenido solo se ve en Firefox</mark></p>`
+    }
+
+    if (isDesktop.linux()) {
+        $divUA.innerHTML += `<p><mark>Descarga nuestro software para Linux</mark></p>`
+    }
+
+    if (isDesktop.mac()) {
+        $divUA.innerHTML += `<p><mark>Descarga nuestro software para Mac OS</mark></p>`
+    }
+
+    if (isDesktop.windows()) {
+        $divUA.innerHTML += `<p><mark>Descarga nuestro software para Windows</mark></p>`
+    }
+
+    // también podemos hacer redirecciones
+
+    // if (isMobile.android()) {
+    //     window.location.href =  "https://jonmircha.com"
+    // }
+
+    // fin detección de dispositivos
 
 })
 
