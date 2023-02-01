@@ -412,7 +412,12 @@ body {
     height: 50%;
 }
 
-
+.main-seccion__webcam {
+    width: 80%;
+    min-width: 30%;
+    height: 70%;
+    margin: 0 auto;
+}
 
 /* medias queries */
 
@@ -483,6 +488,10 @@ body {
 
     .main-seccion__form-2 input {
         width: 60%;
+    }
+
+    .main-seccion__webcam {
+        max-width: 50%;
     }
 }
 

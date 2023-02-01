@@ -534,3 +534,28 @@ w.addEventListener('offline', (e) => {
 })
 
 // fin deteccion de conexión del usuario
+
+// inicio deteccion de la camara web
+
+const $video = d.querySelector('.main-seccion__webcam')
+
+if (navigator.mediaDevices.getUserMedia) {
+    // si el navegador soporta esta función, entonces valida a true
+    navigator.mediaDevices
+    .getUserMedia({video: true, audio: false})
+    .then((stream) => {
+        // si se cumple la promesa, ejecuta lo siguiente:
+        $video.srcObject = stream;
+        $video.play();
+    })
+    .catch((err) => {
+        $video.insertAdjacentHTML('beforebegin', `<p><mark>${err}</mark></p>`)
+        console.log(`Sucedió el siguiente error: ${err}`)
+    });
+
+    // como navigator.mediaDevices.getUserMedia({video: true, audio: false}) devuelve una promesa, entonces se ejcuta el then para ver que pasa cuando la promesa se cumple y el catch por si hay algun error y asi capturarlo.
+
+
+}
+
+// fin deteccion de la camara web
