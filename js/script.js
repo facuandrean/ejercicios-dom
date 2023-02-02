@@ -100,6 +100,18 @@ const $online = d.querySelector('.online'), $offline = d.querySelector('.offline
 
 // fin deteccion de conexión del usuario
 
+// inicio deteccion de la camara web
+
+const $video = d.querySelector('.main-seccion__webcam')
+
+// fin deteccion de la camara web
+
+// inicio geolocalizacion
+
+const $divGeolocation = d.querySelector('.main-seccion__geolocation');
+
+// fin geolocalizacion
+
 d.addEventListener('click', (e) => {
 
     // inicio del menu de hamburguesa
@@ -455,6 +467,57 @@ d.addEventListener('DOMContentLoaded', (e) => {
 
     // fin detección de dispositivos
 
+    // inicio deteccion de la camara web
+
+    if (navigator.mediaDevices.getUserMedia) {
+        // si el navegador soporta esta función, entonces valida a true
+        navigator.mediaDevices
+        .getUserMedia({video: true, audio: false})
+        .then((stream) => {
+            // si se cumple la promesa, ejecuta lo siguiente:
+            $video.srcObject = stream;
+            $video.play();
+        })
+        .catch((err) => {
+            $video.insertAdjacentHTML('beforebegin', `<p><mark>${err}</mark></p>`)
+            console.log(`Sucedió el siguiente error: ${err}`)
+        });
+
+        // como navigator.mediaDevices.getUserMedia({video: true, audio: false}) devuelve una promesa, entonces se ejcuta el then para ver que pasa cuando la promesa se cumple y el catch por si hay algun error y asi capturarlo.
+    }
+
+    // fin deteccion de la camara web
+
+    // inicio geolocalizacion
+
+    const options = {
+        enableHighAccuracy: true, // le decimos al dispositivo que tome la mejor lectura posible que pueda, es decir, estamos acelerando al hardware para que tome la mejor lectura, pero depende de diferentes factores como el estado de la red, la calidad del gps o tarjeta inalámbrica.
+        timeout: 5000, // cuánto tiempo tiene para tomar esa información
+        maximunAge: 0 // para que no se guarden en caché las lecturas.
+    };
+
+    const success = (position) => {
+        // toma la posicion.
+        let coords = position.coords;
+        $divGeolocation.innerHTML = `<p>Tu posición actual es:</p>
+        <ul>
+            <li>Latitud: <b>${coords.latitude}</b></li>
+            <li>Longitud: <b>${coords.longitude}</b></li>
+            <li>Precisión: <b>${coords.accuracy}</b> metros </li>
+        </ul>
+        <a href="https://www.google.com/maps/@${coords.latitude}, ${coords.longitude}, 10z" target="_black" rel="noopener">Ver en Google Maps</a>
+        `
+    }
+
+    const error = (err) => {
+        // por si ocurre algun error
+        $divGeolocation.insertAdjacentHTML('beforebegin', `Error: <p><mark>Codigo de error ${err.code}: ${err.message}</mark></p>`)
+    }
+
+    navigator.geolocation.getCurrentPosition(success, error, options);
+    
+    // fin geolocalizacion
+    
 })
 
 d.addEventListener('scroll', (e) => {
@@ -534,28 +597,3 @@ w.addEventListener('offline', (e) => {
 })
 
 // fin deteccion de conexión del usuario
-
-// inicio deteccion de la camara web
-
-const $video = d.querySelector('.main-seccion__webcam')
-
-if (navigator.mediaDevices.getUserMedia) {
-    // si el navegador soporta esta función, entonces valida a true
-    navigator.mediaDevices
-    .getUserMedia({video: true, audio: false})
-    .then((stream) => {
-        // si se cumple la promesa, ejecuta lo siguiente:
-        $video.srcObject = stream;
-        $video.play();
-    })
-    .catch((err) => {
-        $video.insertAdjacentHTML('beforebegin', `<p><mark>${err}</mark></p>`)
-        console.log(`Sucedió el siguiente error: ${err}`)
-    });
-
-    // como navigator.mediaDevices.getUserMedia({video: true, audio: false}) devuelve una promesa, entonces se ejcuta el then para ver que pasa cuando la promesa se cumple y el catch por si hay algun error y asi capturarlo.
-
-
-}
-
-// fin deteccion de la camara web
