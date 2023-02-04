@@ -112,6 +112,14 @@ const $divGeolocation = d.querySelector('.main-seccion__geolocation');
 
 // fin geolocalizacion
 
+
+// inicio search filters
+
+// necesitamos el input donde se va a escribir y las tarjetas individuales donde se van a hacer las busquedas textuales.
+const $inputSearch = d.querySelector('.card-filter'), $cardsSearchs = d.querySelectorAll('.card');
+
+// fin search filters
+
 d.addEventListener('click', (e) => {
 
     // inicio del menu de hamburguesa
@@ -597,3 +605,27 @@ w.addEventListener('offline', (e) => {
 })
 
 // fin deteccion de conexión del usuario
+
+
+// inicio search filters
+
+d.addEventListener('keyup', (e) => {
+    // necesitamos este evento por el motivo de que cuando el usuario deje de apretar la tecla, se active el evento. Por ejemplo si apreta la tecla r, solamente va a empezar a hacer la búsqueda o va a empezar este evento, cuando el usuario suelte la tecla r.
+    if (e.target === $inputSearch) {
+        // console.log(e.key) el e,key nos muestra el valor de cada tecla, pero lo que necesitamos es tomar en cuenta la palabra completa por ejemplo.
+        // eso lo hacemos de la siguiente manera:
+        // console.log(e.target.value)
+        // esa palabra es la que debe de buscar en todos los elementos html que le digamos, en este caso son las cards.
+
+        if (e.key === "Escape") {
+            e.target.value = "";
+        }
+
+        $cardsSearchs.forEach(element => {
+            // convertimos los textos de las figures en minusculas y además usamos includes que devuelve un booleano si el texto que tienen entre paréntesis está en el elemento o no.
+            element.textContent.toLowerCase().includes(e.target.value) ? element.classList.remove('filter') : element.classList.add('filter');
+        });
+    }
+});
+
+// fin search filters

@@ -432,6 +432,46 @@ body {
     font-size: 1.2rem;
 }
 
+#seccion-9 {
+    height: auto;
+}
+
+.card-filter {
+    padding: .5rem;
+    width: 80%;
+    margin-bottom: 1.5rem;
+}
+
+.cards {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    /* la función repeat es una función que nos permite repetir un tamaño para varias columnas, el primer parámetro hace referencia al número de columnas que quiero repetir y el segundo valor es el valor de ancho que va a tener cada columna. */
+}
+
+.card {
+    background-color: var(--color-2);
+    color: var(--color-10);
+    transition: all .3s ease-out;
+}
+
+.card img {
+    width: 100%;
+    height: auto;
+}
+
+.card figcaption {
+    padding: 1rem;
+}
+
+.filter {
+    /* nos permite ocultar o discriminar los resultados que no coincidan con la busqueda, como le queremos poner transiciones, no se puede con un display none, asique si le queremos poner transiciones debemos usar visibility hidden, pero si no le queremos poner transiciones, con display none basta */
+    /* display: none; */
+    visibility: hidden;
+    opacity: 0;
+    /* esta propiedad de order está disponible solo para grid o flex, lo que hace es que las que tengan order activada, se van a ir moviendo hacia el final, como todas las tarjetas con filter van a tener order 1, estas se van a ir al final dejando al principio las tarjetas con order 0 por defecto, que sería las que coincidan con la busqueda del usuario */
+    order: 1;
+}
+
 /* medias queries */
 
 @media screen and (min-width: 1024px) {
@@ -506,5 +546,10 @@ body {
     .main-seccion__webcam {
         max-width: 50%;
     }
+
+    .card-filter {
+        width: 50%;
+    }
+    
 }
 
