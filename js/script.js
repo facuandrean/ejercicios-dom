@@ -262,6 +262,31 @@ d.addEventListener('click', (e) => {
     }
 
     // fin responsive tester
+
+    // inicio sorteo digital
+
+    if (e.target.matches('#winner-btn')) {
+        // reseteamos inserción al html del ganador
+        d.querySelector('.ganador').innerHTML = "";
+
+        // obtenemos todos los jugadores
+        const $players = d.querySelectorAll('.player');
+
+        // pasamos a un array ese nodeList de todos los jugadores asi accedemos a los métodos de los arrays
+        const arrayPlayers = [...$players];
+
+        // inicializamos variable del ganador que va a tener solo la posición
+        let ganador = 0;
+
+        // determinamos posicion del ganador
+        ganador = Math.floor(Math.random() * arrayPlayers.length)
+
+        // insertamos ganador como ultimo hijo de la sección.
+        d.querySelector('.ganador').innerHTML = `<br><br>El ganador del sorteo es: <h4><mark>${arrayPlayers[ganador].outerText}</mark></h4>`
+        
+    }
+
+    // fin sorteo digital
 })
 
 d.addEventListener('keydown', (e) => {
