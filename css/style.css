@@ -485,7 +485,56 @@ body {
     padding: .5rem;
 }
 
+#seccion-11 {
+    height: auto;
+}
+
+.slider {
+    position: relative;
+    width: 80%;
+    margin: 1rem auto;
+    border: 1px solid red;
+}
+
+.slider-slides {
+    position: relative;
+    height: 350px;
+}
+
+.slider-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: opacity 1s ease;
+}
+
+.slider-buttons {
+    height: 50px;
+    border: 1px solid aqua;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.slider-buttons a {
+    font-size: 2rem;
+    margin: 0 5%;
+}
+
+.slider-buttons a:hover {
+    font-size: 2.5rem
+}
+
 /* medias queries */
+
+@media screen and (min-width: 768px) {
+    .slider-slides {
+        position: relative;
+        height: 400px;
+    }
+}
 
 @media screen and (min-width: 1024px) {
     .header-logo {
@@ -563,6 +612,10 @@ body {
     .card-filter {
         width: 50%;
     }
-    
+
+    .slider-slides {
+        height: 400px;
+    }
+
 }
 

@@ -287,6 +287,12 @@ d.addEventListener('click', (e) => {
     }
 
     // fin sorteo digital
+
+    // inicio responsive slider
+
+    
+
+    // fin responsive slider
 })
 
 d.addEventListener('keydown', (e) => {
