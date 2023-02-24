@@ -569,7 +569,7 @@ d.addEventListener('DOMContentLoaded', (e) => {
         const $span = d.createElement('span');
         $span.id = input.name;
         $span.textContent = input.title;
-        $span.classList.add('contact-form-error', 'none');
+        $span.classList.add('contact-form-error', 'none-2');
         input.insertAdjacentElement('afterend', $span);
     });
 
@@ -628,15 +628,15 @@ d.addEventListener("submit", (e) => {
 
         const $loader = d.querySelector('.contact-form-loader'), $response = d.querySelector('.contact-form-response');
 
-        $loader.classList.remove('none');
+        $loader.classList.remove('none-2');
 
         setTimeout(() => {
-            $loader.classList.add('none');
-            $response.classList.remove('none');
+            $loader.classList.add('none-2');
+            $response.classList.remove('none-2');
             $form_validacion.reset();
 
             setTimeout(() => {
-                $response.classList.add('none');
+                $response.classList.add('none-2');
             }, 3000);
         }, 3000);
     }
