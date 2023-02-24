@@ -625,9 +625,6 @@ d.addEventListener("submit", (e) => {
     // inicio validacion de formulario
 
     if (e.target === $form_validacion) {
-        e.preventDefault();
-
-        alert('enviando formulario')
 
         const $loader = d.querySelector('.contact-form-loader'), $response = d.querySelector('.contact-form-response');
 
