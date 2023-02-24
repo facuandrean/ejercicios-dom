@@ -39,7 +39,7 @@
                 <li class="h-n-ul-li"><a href="#seccion-10" class="h-n-ul-li__a" data-dark-2>Sorteo Digital</a></li>
                 <li class="h-n-ul-li"><a href="#seccion-11" class="h-n-ul-li__a" data-dark-2>Responsive Slider</a></li>
                 <li class="h-n-ul-li"><a href="#seccion-12" class="h-n-ul-li__a" data-dark-2>Calculator</a></li>
-                <li class="h-n-ul-li"><a href="#seccion-13" class="h-n-ul-li__a" data-dark-2>Seccion 13</a></li>
+                <li class="h-n-ul-li"><a href="#seccion-13" class="h-n-ul-li__a" data-dark-2>Validaciones de Formulario</a></li>
                 <li class="h-n-ul-li"><a href="#seccion-14" class="h-n-ul-li__a" data-dark-2>Seccion 14</a></li>
                 <li class="h-n-ul-li"><a href="#seccion-15" class="h-n-ul-li__a" data-dark-2>Seccion 15</a></li>
                 <li class="h-n-ul-li"><a href="#seccion-16" class="h-n-ul-li__a" data-dark-2>Seccion 16</a></li>
@@ -243,7 +243,25 @@
         </section>
 
         <section class="main-seccion" id="seccion-13" data-dark>
-            <h2 class="main-seccion__h2">Seccion 13</h2>
+            <h2 class="main-seccion__h2">Validaciones de Formulario</h2>
+            <form class="contact-form">
+                <legend>Envíanos tus comentarios</legend>
+                <!-- la etiqueta legend es una etiqueta interna de los formularios que es como si fuese el título del formulario -->
+                <input type="text" name="name" placeholder="Escribe tu nombre..." title="Nombre sólo acepta letras y espacios en blanco" pattern="^[A-Za-zÑñÁáÉéÍíÓóÚúÜü\s]+$" required>
+                <!-- el atributo title es el mensaje que el navegador le pone cuando hay algun error y nosotros podemos personalizar es mensaje a través de este atributo -->
+                <!-- el atributo pattern es para escribirle la expresión regular que valide el campo -->
+                <input type="email" name="email" placeholder="Escribe tu e-mail..." title="E-mail incorrecto" pattern="^[a-z0-9]+(\.[_a-z0-9]+)*@[a-z0-9-]+(\.[a-z0-9-]+)*(\.[a-z]{2,15})$" required>
+                <input type="text" name="subject" placeholder="Asunto a tratar..." title="El asunto es requerido" required>
+                <textarea name="comments" cols="50" rows="5" placeholder="Escribe tus comentarios..." data-pattern="^.{1,255}$" title="Tu comentario no debe exceder los 255 caracteres" required></textarea>
+                <!-- se usa un data atributte data-pattern para almacenar una expresión regular y asi trabajarla desde JS, por el motivo de que las textareas no soportan el atributo pattern -->
+                <input type="submit" value="Enviar">
+                <div class="contact-form-loader none">
+                    <img src="assets/spinning-circles.svg" alt="Cargando">
+                </div>
+                <div class="contact-form-response none">
+                    <p>Los datos han sido enviados</p>
+                </div>
+            </form>
         </section>
 
         <section class="main-seccion" id="seccion-14" data-dark>

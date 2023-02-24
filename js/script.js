@@ -120,6 +120,12 @@ const $inputSearch = d.querySelector('.card-filter'), $cardsSearchs = d.querySel
 
 // fin search filters
 
+// inicio validacion de formulario
+
+const $form_validacion = d.querySelector('.contact-form'), $inputs = d.querySelectorAll('.contact-form [required]');
+
+// fin validacion de formulario
+
 d.addEventListener('click', (e) => {
 
     // inicio del menu de hamburguesa
@@ -556,6 +562,18 @@ d.addEventListener('DOMContentLoaded', (e) => {
     navigator.geolocation.getCurrentPosition(success, error, options);
     
     // fin geolocalizacion
+
+    // inicio validacion de formulario
+
+    $inputs.forEach(input => {
+        const $span = d.createElement('span');
+        $span.id = input.name;
+        $span.textContent = input.title;
+        $span.classList.add('contact-form-error', 'none');
+        input.insertAdjacentElement('afterend', $span);
+    });
+
+    // fin de validación de formulario
     
 })
 
@@ -657,6 +675,25 @@ d.addEventListener('keyup', (e) => {
             element.textContent.toLowerCase().includes(e.target.value) ? element.classList.remove('filter') : element.classList.add('filter');
         });
     }
+
+    // inicio validacion de formulario
+
+    if (e.target.matches('.contact-form [required]')) {
+        let $input = e.target, pattern = $input.pattern || $input.dataset.pattern;
+
+        if (pattern && $input.value !== "") {
+            let regex = new RegExp(pattern);
+            return !regex.exec($input.value) ? d.getElementById($input.name).classList.add('is-active') : d.getElementById($input.name).classList.remove('is-active')
+            // si el valor del input no cumple con la expresión regular, se ejecuta ?, pero si cumple, se ejecuta :
+        }
+
+        if (!pattern) {
+            return $input.value === "" ? d.getElementById($input.name).classList.add('is-active') : d.getElementById($input.name).classList.remove('is-active')
+            // si el input value es exactamente igual a nada, muestra el mensaje de error, sino no lo muestres.
+        }
+    }
+
+    // fin validacion de formulario
 });
 
 // fin search filters
