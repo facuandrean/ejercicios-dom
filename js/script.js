@@ -312,7 +312,6 @@ d.addEventListener('click', (e) => {
 
     // fin responsive slider
 
-
     // inicio narrador
 
     if (e.target === $speechBtn) {
