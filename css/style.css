@@ -713,6 +713,20 @@ body {
     display: none;
 }
 
+.narrador {
+    width: 100%;
+    height: auto;
+}
+
+#speech-select {
+    width: 100%;
+}
+
+#speech-text {
+    width: 100%;
+    resize: none;
+}
+
 @keyframes show-message {
     0% {
         visibility: hidden;

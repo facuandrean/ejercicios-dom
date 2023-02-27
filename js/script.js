@@ -126,6 +126,18 @@ const $form_validacion = d.querySelector('.contact-form'), $inputs = d.querySele
 
 // fin validacion de formulario
 
+// inicio narrador 
+
+const $speechSelect = d.getElementById('speech-select'), $speechTextArea = d.getElementById('speech-text'), $speechBtn = d.getElementById('speech-btn'), speechMessage = new SpeechSynthesisUtterance();
+
+// la ultima variable es un objeto que tiene ciertos eventos y algunas propiedades, pero hay una en particular llamada voice y viene con el valor en null.
+
+let voices = [];
+
+// a las voces las vamos a obtener a través de la API de speechSynthesis. Esta API tiene un método llamado getVoices(). Este método si lo ejecutamos nos devuelve un array de todas las voces que tenga el sistema operativo y que las detecte el navegador en el que estemos. Cada voz tiene una propiedad en particular para sacarle el nombre.
+
+// fin narrador
+
 d.addEventListener('click', (e) => {
 
     // inicio del menu de hamburguesa
@@ -299,6 +311,16 @@ d.addEventListener('click', (e) => {
     
 
     // fin responsive slider
+
+
+    // inicio narrador
+
+    if (e.target === $speechBtn) {
+        speechMessage.text = $speechTextArea.value;
+        speechSynthesis.speak(speechMessage)
+    }
+
+    // fin narrador
 })
 
 d.addEventListener('keydown', (e) => {
@@ -574,8 +596,36 @@ d.addEventListener('DOMContentLoaded', (e) => {
     });
 
     // fin de validación de formulario
+
+    // inicio narrador 
+
+    window.speechSynthesis.addEventListener('voiceschanged', e => {
+        // se ejecuta este evento por el motivo de que no podemos ejecutar el metodo solo window.speechSynthesis.getVoices(); lo debemos ejecutar en este evento.
+        voices = window.speechSynthesis.getVoices();
+
+        voices.forEach(voice => {
+            const $option = d.createElement('option');
+            $option.value = voice.name;
+            $option.textContent = `${voice.name} *** ${voice.lang}`;
+
+            $speechSelect.appendChild($option);
+        })
+    })
+
+    // fin narrador
     
 })
+
+d.addEventListener('change', e => {
+    // inicio narrador
+
+    if (e.target === $speechSelect) {
+        // aca asignamos la voz que elija el usuario.
+        speechMessage.voice = voices.find(voice => voice.name === e.target.value);
+    }
+
+    // fin narrador
+}) 
 
 d.addEventListener('scroll', (e) => {
 
